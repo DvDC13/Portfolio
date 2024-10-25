@@ -1,6 +1,9 @@
 import React, {Suspense} from 'react'
-import Globe from "react-globe.gl";
 import Button from "../components/Button.jsx";
+import CanvasLoader from "../components/CanvasLoader.jsx";
+import Earth from "../components/Earth.jsx";
+import {OrbitControls, PerspectiveCamera} from "@react-three/drei";
+import {Canvas} from "@react-three/fiber";
 
 const isWebGLAvailable = () => {
     try {
@@ -31,17 +34,16 @@ const About = () => {
                         <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
                             {
                                 isWebGLAvailable() ? (
-                                    <Globe
-                                        height={400}
-                                        width={400}
-                                        backgroundColor={"rgba(0, 0, 0, 0)"}
-                                        backgroundImageOpacity={0.5}
-                                        showAtmosphere
-                                        showGraticules
-                                        globeImageUrl={"//unpkg.com/three-globe/example/img/earth-day.jpg"}
-                                        bumpImageUrl={"//unpkg.com/three-globe/example/img/earth-topology.png"}
-                                    />
-                                ): (
+                                    <Canvas className="w-full h-full">
+                                        <Suspense fallback={<CanvasLoader />}>
+                                            <PerspectiveCamera makeDefault position={[0, 0, 3]} />
+                                            <OrbitControls />
+                                            <Earth rotation={[-0, 1.5, 0]} />
+                                            <ambientLight intensity={1.5} />
+                                            <directionalLight position={[3, 2, 1]} />
+                                        </Suspense>
+                                    </Canvas>
+                                ) : (
                                     <p className="text-white text-3xl">WebGL is not supported!</p>
                                 )
                             }
