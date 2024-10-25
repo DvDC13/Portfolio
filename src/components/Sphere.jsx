@@ -10,7 +10,7 @@ const Sphere = (props) => {
     const [decal] = useTexture([props.imgUrl])
 
     return (
-        <Float speed={1.75} rotationIntensity={2}>
+        <Float floatIntensity={2.25}>
             <ambientLight intensity={1.25} />
             <directionalLight position={[0, 0, 0.05]} />
             <mesh castShadow receiveShadow scale={2.75}>
@@ -36,7 +36,6 @@ const Sphere = (props) => {
 const SphereCanvas = ({icon}) => {
     return (
         <Canvas
-            frameloop='demand'
             gl={{ preserveDrawingBuffers: true }}
         >
             <Suspense fallback={<CanvasLoader />}>
