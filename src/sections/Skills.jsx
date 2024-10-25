@@ -17,7 +17,7 @@ const Skills = () => {
             <div className="flex flex-wrap justify-center gap-20 mt-20">
                 {
                     skills.map((skill) => (
-                        <div className="w-28 h-28">
+                        <div className="w-28 h-28" key={skill.name}>
                             <SphereCanvas icon={skill.icon}/>
                         </div>
                     ))

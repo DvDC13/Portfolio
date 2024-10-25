@@ -21,8 +21,8 @@ const About = () => {
                     <div className="grid-container">
                         <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
                             <Globe
-                                height={400}
-                                width={400}
+                                height={300}
+                                width={300}
                                 backgroundColor={"rgba(0, 0, 0, 0)"}
                                 backgroundImageOpacity={0.5}
                                 showAtmosphere

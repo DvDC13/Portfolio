@@ -337,10 +337,10 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
     return {
         deskScale: isSmall ? 3 : isMobile ? 4 : 4.5,
         deskPosition: isMobile ? [0.1, -4.5, 0] : [0.01, -5.5, 0],
-        reactLogoPosition: isSmall ? [3, 4, 0] : isMobile ? [4, 2, 0] : isTablet ? [7, 2, 0] : [10, 3, 0],
-        cppPosition: isSmall ? [3, -2, 0] : isMobile ? [-3, 2, 0] : isTablet ? [-6, 1, 0] : [-9, 2, 0],
+        reactLogoPosition: isSmall ? [3, 3, 0] : isMobile ? [4, 2, 0] : isTablet ? [7, 2, 0] : [10, 3, 0],
+        cppPosition: isSmall ? [-3, 2, 0] : isMobile ? [-3, 2, 0] : isTablet ? [-6, 1, 0] : [-9, 2, 0],
         rubiksCubePosition: isSmall ? [-3, -2, 0] : isMobile ? [-3, -3, 0] : isTablet ? [-7, -4, 0] : [-8, -5, 0],
-        djControllerPosition: isSmall ? [-3, 2, 0] : isMobile ? [1.5, -4, 0] : isTablet ? [3, -6, 0] : [4, -6, 0],
+        djControllerPosition: isSmall ? [1, -4, 0] : isMobile ? [1.5, -4, 0] : isTablet ? [3, -6, 0] : [4, -6, 0],
         djControllerScale: isSmall ? 1 : isMobile ? 1 : isTablet ? 1.5 : 2,
     };
 };
