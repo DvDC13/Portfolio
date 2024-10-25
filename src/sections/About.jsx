@@ -1,10 +1,6 @@
 import React, {Suspense} from 'react'
 import Globe from "react-globe.gl";
 import Button from "../components/Button.jsx";
-import Earth from "../components/Earth.jsx";
-import {OrbitControls, PerspectiveCamera} from "@react-three/drei";
-import {Canvas} from "@react-three/fiber";
-import CanvasLoader from "../components/CanvasLoader.jsx";
 
 const isWebGLAvailable = () => {
     try {
@@ -46,15 +42,7 @@ const About = () => {
                                         bumpImageUrl={"//unpkg.com/three-globe/example/img/earth-topology.png"}
                                     />
                                 ): (
-                                    <Canvas gl={{preserveDrawingBuffers: true}}>
-                                        <Suspense fallback={<CanvasLoader/>}>
-                                            <PerspectiveCamera makeDefault position={[0, 0, 20]} />
-                                            <OrbitControls />
-                                            <Earth />
-                                            <ambientLight intensity={4}/>
-                                            <directionalLight position={[10, 10, 10]} intensity={0.5}/>
-                                        </Suspense>
-                                    </Canvas>
+                                    <p className="text-white text-3xl">WebGL is not supported!</p>
                                 )
                             }
                         </div>
