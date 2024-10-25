@@ -4,7 +4,7 @@ import SphereCanvas from "../components/Sphere.jsx";
 
 const Skills = () => {
     return (
-        <section className="c-space py-10" id="skills">
+        <section className="c-space py-20" id="skills">
             <div>
                 <p className="text-gray-500 sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider">
                     My Expertise

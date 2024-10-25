@@ -63,7 +63,7 @@ const Contact = () => {
     }
 
     return (
-        <section className="c-space" id="contact">
+        <section className="c-space py-10" id="contact">
             <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
                 <div className="grid-container p-8 rounded-2xl">
                     <p className="text-gray-500 sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider">Get in touch</p>

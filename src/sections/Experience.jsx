@@ -46,7 +46,7 @@ const ExperienceCard = ({ experience }) => {
 
 const Experience = () => {
     return (
-        <section className="c-space my-20" id="work">
+        <section className="c-space py-20" id="work">
             <>
                 <div>
                     <p className="text-gray-500 sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider">

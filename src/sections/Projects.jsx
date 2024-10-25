@@ -56,7 +56,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 
 const Projects = () => {
     return (
-        <section className="c-space py-10" id="projects">
+        <section className="c-space py-20" id="projects">
             <div>
                 <p className="text-gray-500 sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider">
                     My Work

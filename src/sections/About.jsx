@@ -1,10 +1,23 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import Globe from "react-globe.gl";
 import Button from "../components/Button.jsx";
+import Earth from "../components/Earth.jsx";
+import {OrbitControls, PerspectiveCamera} from "@react-three/drei";
+import {Canvas} from "@react-three/fiber";
+import CanvasLoader from "../components/CanvasLoader.jsx";
+
+const isWebGLAvailable = () => {
+    try {
+        const canvas = document.createElement('canvas');
+        return !!window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+    } catch (e) {
+        return false;
+    }
+};
 
 const About = () => {
     return (
-        <section className="c-space my-20" id="about">
+        <section className="c-space py-20" id="about">
             <div className="container mx-auto">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-10">
                     <div className="w-full md:w-1/2">
@@ -20,16 +33,30 @@ const About = () => {
                     </div>
                     <div className="grid-container">
                         <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
-                            <Globe
-                                height={300}
-                                width={300}
-                                backgroundColor={"rgba(0, 0, 0, 0)"}
-                                backgroundImageOpacity={0.5}
-                                showAtmosphere
-                                showGraticules
-                                globeImageUrl={"//unpkg.com/three-globe/example/img/earth-day.jpg"}
-                                bumpImageUrl={"//unpkg.com/three-globe/example/img/earth-topology.png"}
-                            />
+                            {
+                                isWebGLAvailable() ? (
+                                    <Globe
+                                        height={400}
+                                        width={400}
+                                        backgroundColor={"rgba(0, 0, 0, 0)"}
+                                        backgroundImageOpacity={0.5}
+                                        showAtmosphere
+                                        showGraticules
+                                        globeImageUrl={"//unpkg.com/three-globe/example/img/earth-day.jpg"}
+                                        bumpImageUrl={"//unpkg.com/three-globe/example/img/earth-topology.png"}
+                                    />
+                                ): (
+                                    <Canvas gl={{preserveDrawingBuffers: true}}>
+                                        <Suspense fallback={<CanvasLoader/>}>
+                                            <PerspectiveCamera makeDefault position={[0, 0, 20]} />
+                                            <OrbitControls />
+                                            <Earth />
+                                            <ambientLight intensity={4}/>
+                                            <directionalLight position={[10, 10, 10]} intensity={0.5}/>
+                                        </Suspense>
+                                    </Canvas>
+                                )
+                            }
                         </div>
                         <div>
                             <p className="grid-headtext">
