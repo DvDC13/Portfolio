@@ -51,13 +51,11 @@ const Hero = () => {
                 <Canvas className="w-full h-full">
                     <Suspense fallback={<CanvasLoader/>}>
                     <PerspectiveCamera makeDefault position={[0, 0, 20]} />
-                        {!isMobile && !isSmallScreen && (
-                            <David
-                                position={sizes.deskPosition}
-                                rotation={[0, 0, 0]}
-                                scale={sizes.deskScale}
-                            />)
-                        }
+                    <David
+                        position={sizes.deskPosition}
+                        rotation={[0, 0, 0]}
+                        scale={sizes.deskScale}
+                    />
 
                     <group>
                         <ReactLogo position={sizes.reactLogoPosition}/>

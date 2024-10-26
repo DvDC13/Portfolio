@@ -34,7 +34,7 @@ const About = () => {
                         <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
                             {
                                 isWebGLAvailable() ? (
-                                    <Canvas className="w-full h-full">
+                                    <Canvas gl={{ preserveDrawingBuffers: true }}>
                                         <Suspense fallback={<CanvasLoader />}>
                                             <PerspectiveCamera makeDefault position={[0, 0, 3]} />
                                             <OrbitControls />
