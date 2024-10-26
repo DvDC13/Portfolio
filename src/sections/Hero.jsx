@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react'
+import React, {Suspense, useEffect, useState} from 'react'
 import CanvasLoader from "../components/CanvasLoader.jsx";
 import {Canvas} from "@react-three/fiber";
 import {useMediaQuery} from "react-responsive";
@@ -19,13 +19,31 @@ const Hero = () => {
 
     const sizes = calculateSizes(isSmallScreen, isMobile, isTablet)
 
+    const [styles, setStyles] = useState({});
+    useEffect(() => {
+        const updateStyles = () => {
+            if (window.innerHeight < 600) {
+                setStyles({
+                    fontSize: '2rem',
+                    marginTop: '-1rem'
+                })
+            } else {
+                setStyles({})
+            }
+        }
+
+        updateStyles()
+        window.addEventListener('resize', updateStyles)
+        return () => window.removeEventListener('resize', updateStyles)
+    }, []);
+
     return (
         <section className="min-h-screen flex flex-col relative" id="home">
             <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
-                <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans">
+                <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans" style={styles}>
                     Hello, I'm David <span className="waving-hand">✌🏻</span>
                 </p>
-                <p className="hero_tag text-gray_gradient">
+                <p className="hero_tag text-gray_gradient" style={styles}>
                     Building and Learning Things
                 </p>
             </div>
