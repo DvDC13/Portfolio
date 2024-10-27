@@ -19,53 +19,45 @@ const Hero = () => {
 
     const sizes = calculateSizes(isSmallScreen, isMobile, isTablet)
 
-    const [styles, setStyles] = useState({});
-    useEffect(() => {
-        const updateStyles = () => {
-            if (window.innerHeight < 600) {
-                setStyles({
-                    fontSize: '2rem',
-                    marginTop: '-1rem'
-                })
-            } else {
-                setStyles({})
-            }
-        }
-
-        updateStyles()
-        window.addEventListener('resize', updateStyles)
-        return () => window.removeEventListener('resize', updateStyles)
-    }, []);
+    const DavidModel = React.memo(() => <David position={sizes.deskPosition} rotation={[0, 0, 0]} scale={sizes.deskScale} />)
 
     return (
         <section className="min-h-screen flex flex-col relative" id="home">
             <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
-                <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans" style={styles}>
+                <p className="sm:text-3xl text-2xl font-medium text-white text-center font-generalsans">
                     Hello, I'm David <span className="waving-hand">✌🏻</span>
                 </p>
-                <p className="hero_tag text-gray_gradient" style={styles}>
+                <p className="hero_tag text-gray_gradient">
                     Building and Learning Things
                 </p>
             </div>
             <div className="w-full h-full absolute inset-0">
-                <Canvas className="w-full h-full">
-                    <Suspense fallback={<CanvasLoader/>}>
-                    <PerspectiveCamera makeDefault position={[0, 0, 20]} />
-                    <David
-                        position={sizes.deskPosition}
-                        rotation={[0, 0, 0]}
-                        scale={sizes.deskScale}
-                    />
+                <Canvas className="w-full h-full" dpr={[1, 1.5]}>
+                    <Suspense fallback={<CanvasLoader />}>
+                        <PerspectiveCamera makeDefault position={[0, 0, 20]} />
 
-                    <group>
-                        <ReactLogo position={sizes.reactLogoPosition}/>
-                        <Cpp position={sizes.cppPosition}/>
-                        <RubiksCube position={sizes.rubiksCubePosition}/>
-                        <DjController position={sizes.djControllerPosition} scale={sizes.djControllerScale}/>
-                    </group>
+                        <ambientLight intensity={2} />
+                        <hemisphereLight intensity={0.3} groundColor={0xffffff} />
 
-                    <ambientLight intensity={4}/>
-                    <directionalLight position={[10, 10, 10]} intensity={0.5}/>
+                        <Suspense fallback={<CanvasLoader />}>
+                            <David position={sizes.deskPosition} rotation={[0, 0, 0]} scale={sizes.deskScale} />
+                        </Suspense>
+
+                        <Suspense fallback={<CanvasLoader />}>
+                            <ReactLogo position={sizes.reactLogoPosition} />
+                        </Suspense>
+
+                        <Suspense fallback={<CanvasLoader />}>
+                            <Cpp position={sizes.cppPosition} />
+                        </Suspense>
+
+                        <Suspense fallback={<CanvasLoader />}>
+                            <RubiksCube position={sizes.rubiksCubePosition} />
+                        </Suspense>
+
+                        <Suspense fallback={<CanvasLoader />}>
+                            <DjController position={sizes.djControllerPosition} scale={sizes.djControllerScale} />
+                        </Suspense>
                     </Suspense>
                 </Canvas>
             </div>
