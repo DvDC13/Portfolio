@@ -29,9 +29,9 @@ const MyScene = ({ activeSection , sizes }) => {
 
                 {activeSection === "about" && (
                     <>
-                        {/*<OrbitControls />*/}
-                        {/*<PerspectiveCamera makeDefault position={[0, 0, 3]} />*/}
-                        {/*<Earth rotation={[0, 1.5, 0]} />*/}
+                        <OrbitControls />
+                        <PerspectiveCamera makeDefault position={[0, 0, 3]} />
+                        <Earth rotation={[0, 1.5, 0]} />
                     </>
 
                 )}
