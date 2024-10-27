@@ -10,6 +10,7 @@ import Cpp from "../components/Cpp.jsx";
 import RubiksCube from "../components/Rubiks_cube.jsx";
 import DjController from "../components/Dj_controller.jsx";
 import Button from "../components/Button.jsx";
+import MyScene from "../components/Scene.jsx";
 
 const Hero = () => {
 
@@ -18,8 +19,6 @@ const Hero = () => {
     const isTablet = useMediaQuery({minWidth: 768, maxWidth: 1024})
 
     const sizes = calculateSizes(isSmallScreen, isMobile, isTablet)
-
-    const DavidModel = React.memo(() => <David position={sizes.deskPosition} rotation={[0, 0, 0]} scale={sizes.deskScale} />)
 
     return (
         <section className="min-h-screen flex flex-col relative" id="home">
@@ -32,34 +31,35 @@ const Hero = () => {
                 </p>
             </div>
             <div className="w-full h-full absolute inset-0">
-                <Canvas className="w-full h-full" dpr={[1, 1.5]}>
-                    <Suspense fallback={<CanvasLoader />}>
-                        <PerspectiveCamera makeDefault position={[0, 0, 20]} />
+                {/*<Canvas className="w-full h-full" dpr={[1, 1.5]}>*/}
+                {/*    <Suspense fallback={<CanvasLoader />}>*/}
+                {/*        <PerspectiveCamera makeDefault position={[0, 0, 20]} />*/}
 
-                        <ambientLight intensity={2} />
-                        <hemisphereLight intensity={0.3} groundColor={0xffffff} />
+                {/*        <ambientLight intensity={2} />*/}
+                {/*        <hemisphereLight intensity={0.3} groundColor={0xffffff} />*/}
 
-                        <Suspense fallback={<CanvasLoader />}>
-                            <David position={sizes.deskPosition} rotation={[0, 0, 0]} scale={sizes.deskScale} />
-                        </Suspense>
+                {/*        <Suspense fallback={<CanvasLoader />}>*/}
+                {/*            <David position={sizes.deskPosition} rotation={[0, 0, 0]} scale={sizes.deskScale} />*/}
+                {/*        </Suspense>*/}
 
-                        <Suspense fallback={<CanvasLoader />}>
-                            <ReactLogo position={sizes.reactLogoPosition} />
-                        </Suspense>
+                {/*        <Suspense fallback={<CanvasLoader />}>*/}
+                {/*            <ReactLogo position={sizes.reactLogoPosition} />*/}
+                {/*        </Suspense>*/}
 
-                        <Suspense fallback={<CanvasLoader />}>
-                            <Cpp position={sizes.cppPosition} />
-                        </Suspense>
+                {/*        <Suspense fallback={<CanvasLoader />}>*/}
+                {/*            <Cpp position={sizes.cppPosition} />*/}
+                {/*        </Suspense>*/}
 
-                        <Suspense fallback={<CanvasLoader />}>
-                            <RubiksCube position={sizes.rubiksCubePosition} />
-                        </Suspense>
+                {/*        <Suspense fallback={<CanvasLoader />}>*/}
+                {/*            <RubiksCube position={sizes.rubiksCubePosition} />*/}
+                {/*        </Suspense>*/}
 
-                        <Suspense fallback={<CanvasLoader />}>
-                            <DjController position={sizes.djControllerPosition} scale={sizes.djControllerScale} />
-                        </Suspense>
-                    </Suspense>
-                </Canvas>
+                {/*        <Suspense fallback={<CanvasLoader />}>*/}
+                {/*            <DjController position={sizes.djControllerPosition} scale={sizes.djControllerScale} />*/}
+                {/*        </Suspense>*/}
+                {/*    </Suspense>*/}
+                {/*</Canvas>*/}
+                <MyScene activeSection="hero" sizes={sizes}/>
             </div>
 
             <div className="absolute bottom-7 left-0 right-0 w-full z-10 c-space">

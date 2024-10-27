@@ -4,6 +4,7 @@ import CanvasLoader from "../components/CanvasLoader.jsx";
 import Earth from "../components/Earth.jsx";
 import {OrbitControls, PerspectiveCamera} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
+import MyScene from "../components/Scene.jsx";
 
 const isWebGLAvailable = () => {
     try {
@@ -34,17 +35,7 @@ const About = () => {
                         <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
                             {
                                 isWebGLAvailable() ? (
-                                    <Canvas dpr={[1, 1.5]}>
-                                        <Suspense fallback={<CanvasLoader />}>
-                                            <PerspectiveCamera makeDefault position={[0, 0, 3]} />
-                                            <OrbitControls />
-
-                                            <Earth rotation={[0, 1.5, 0]} />
-
-                                            <ambientLight intensity={1.0} />
-                                            <directionalLight position={[3, 2, 1]} intensity={0.5} />
-                                        </Suspense>
-                                    </Canvas>
+                                    <MyScene activeSection={"about"} />
                                 ) : (
                                     <p className="text-white text-3xl">WebGL is not supported!</p>
                                 )
